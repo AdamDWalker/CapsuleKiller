@@ -190,7 +190,7 @@ Transform:
   - {fileID: 1681146118}
   - {fileID: 1650986284}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &72419906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181db7fbc05193d419fb974d5fa46a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  spawnSpeed: 1
-  m_RootOrder: 1
+  enemy: {fileID: 140450, guid: d1ccc518528f66745a489ca6294d19cd, type: 2}
+  spawnSpeed: 4
+  enemyLowerBound: 3
+  enemyUpperBound: 6
 --- !u!1 &257648170
 GameObject:
   m_ObjectHideFlags: 0
