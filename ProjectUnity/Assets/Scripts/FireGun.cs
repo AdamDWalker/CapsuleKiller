@@ -20,7 +20,9 @@ public class FireGun : MonoBehaviour
         if ( Input.GetMouseButtonDown(0) )
         {
             GameObject newBullet = Instantiate(bullet);
+            Destroy(newBullet, 10.0f);
             newBullet.transform.position = bulletSpawn.position;
+            newBullet.transform.rotation = transform.parent.rotation;
         }
 	}
 }
