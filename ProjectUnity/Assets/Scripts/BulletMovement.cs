@@ -17,4 +17,13 @@ public class BulletMovement : MonoBehaviour
     {
 	    bullet.transform.position += (transform.forward * speed * Time.deltaTime);
 	}
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if ( collision.tag == "Enemy" )
+        {
+            Destroy(collision.gameObject);
+            Destroy(bullet);
+        }
+    }
 }
