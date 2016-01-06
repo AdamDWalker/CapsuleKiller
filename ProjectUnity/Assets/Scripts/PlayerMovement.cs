@@ -26,5 +26,19 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 
 		playerRigidbody.MovePosition (playerRigidbody.position + Velocity * Time.fixedDeltaTime);
-	}
+
+        // look at mouse
+        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float camDistance = 100;
+
+        Debug.DrawRay(camRay.origin, camRay.direction*camDistance, Color.green);
+
+        Vector3 endPoint = camRay.origin + (camRay.direction * camDistance);
+        endPoint.y = 0;
+
+        Quaternion newRotation = Quaternion.LookRotation(endPoint);
+
+        playerRigidbody.MoveRotation(newRotation);
+    }
 }
