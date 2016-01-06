@@ -20,6 +20,12 @@ public class PlayerMovement : MonoBehaviour {
 		Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
 		Velocity = moveInput.normalized * speed;
 
+        // look at mouse
+        Vector3 MousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+        Vector3 LookPos = Camera.main.ScreenToWorldPoint(MousePos);
+
+        transform.LookAt(LookPos);
+
 	}
 
 	// Update is called once per frame
