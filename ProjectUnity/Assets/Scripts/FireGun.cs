@@ -4,13 +4,14 @@ using System.Collections;
 public class FireGun : MonoBehaviour
 {
 
-    Vector3 bulletSpawn;
+    Transform bulletSpawn;
     public GameObject bullet;
 
 	// Use this for initialization
 	void Start ()
     {
-        bulletSpawn = transform.Find("BulletSpawn").position;
+        bulletSpawn = GameObject.Find("BulletSpawn").transform;
+        
 	}
 	
 	// Update is called once per frame
@@ -18,10 +19,8 @@ public class FireGun : MonoBehaviour
     {
         if ( Input.GetMouseButtonDown(0) )
         {
-            GameObject newBullet = new GameObject();
-            newBullet.transform.parent = gameObject.transform;
-            newBullet.transform.position = bulletSpawn;
-            Instantiate(newBullet);
+            GameObject newBullet = Instantiate(bullet);
+            newBullet.transform.position = bulletSpawn.position;
         }
 	}
 }
