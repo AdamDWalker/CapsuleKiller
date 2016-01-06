@@ -443,6 +443,7 @@ GameObject:
   - 23: {fileID: 1480490991}
   - 54: {fileID: 1480490995}
   - 114: {fileID: 1480490997}
+  - 114: {fileID: 1480490996}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -523,6 +524,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1480490996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1480490990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa518ca7a37804ca6fd4dae4cdcdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1480490997
 MonoBehaviour:
   m_ObjectHideFlags: 0
