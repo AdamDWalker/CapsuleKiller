@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 		Velocity = moveInput.normalized * speed;
 
         // look at mouse
-        Vector3 MousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+        Vector3 MousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f);
         Vector3 LookPos = Camera.main.ScreenToWorldPoint(MousePos);
 
         transform.LookAt(LookPos);
