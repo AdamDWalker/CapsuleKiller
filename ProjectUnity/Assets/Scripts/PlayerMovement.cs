@@ -58,9 +58,13 @@ public class PlayerMovement : MonoBehaviour {
             RaycastHit rayHitPoint;
 
             // draw a line from the gun outwards
-            if (Physics.Raycast(LineSpawn.transform.position, Vector3.forward, out rayHitPoint, 50.0f))
+            // raycast to find the point of intersection
+            if (Physics.Raycast(LineSpawn.transform.position, transform.forward, out rayHitPoint, 50.0f))
             {
-                PlayerLine.SetPosition(1, rayHitPoint.point);
+                // find distance between the 2 points
+                float lineDistance = Vector3.Distance(LineSpawn.transform.position, rayHitPoint.point);
+                // set the end point of the line
+                PlayerLine.SetPosition(1, new Vector3(0, 0, lineDistance));
             }
         }
     }
