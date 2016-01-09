@@ -4,7 +4,11 @@ using System.Collections;
 public class EnemySpawn : MonoBehaviour {
 
     public GameObject enemy;
-    public float spawnSpeed = 1.0f;
+    public float spawnSpeed = 10.0f;
+
+    // batches of enemies
+    public uint enemyLowerBound = 3;
+    public uint enemyUpperBound = 6;
 
     // for how big the plane (floor) is
     private float areaxSize;
@@ -41,12 +45,16 @@ public class EnemySpawn : MonoBehaviour {
 
     void spawnEnemy()
     {
-        // calculate enemy location using width and depth of the plane
-        float xPos = Random.Range(-areaxSize, areaxSize);
-        float zPos = Random.Range(-areazSize, areazSize);
-        Vector3 EnemyLocation = new Vector3(xPos, 1.0f, zPos);
+        // make the enem(ies)
+        int enemy_count = (int)Random.Range(enemyLowerBound, enemyUpperBound); // generate a random number of enemies
+        for (int i = 0; i < enemy_count; i++) // loop to create them
+        {
+            // calculate enemy location using width and depth of the plane
+            float xPos = Random.Range(-areaxSize, areaxSize);
+            float zPos = Random.Range(-areazSize, areazSize);
+            Vector3 EnemyLocation = new Vector3(xPos, 1.0f, zPos);
 
-        // make the enemy!
-        Instantiate(enemy, EnemyLocation, Quaternion.identity);
+            Instantiate(enemy, EnemyLocation, Quaternion.identity);
+        }
     }
 }
