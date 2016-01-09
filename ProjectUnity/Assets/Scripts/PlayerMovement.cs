@@ -45,9 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 
             Debug.Log("Hit point: " + hitPoint);
 
-            Quaternion newRotation = Quaternion.LookRotation(hitPoint);
-
-            playerRigidbody.MoveRotation(newRotation);
+            transform.LookAt(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
         }
     }
 }
