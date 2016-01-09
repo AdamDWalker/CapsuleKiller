@@ -5,13 +5,19 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	public int speed = 5;
-	Rigidbody playerRigidbody;
-	Vector3 Velocity;
+
+    private Rigidbody playerRigidbody;
+	private Vector3 Velocity;
+    private GameObject LineSpawn;
+    private LineRenderer PlayerLine;
 
 	// Use this for initialization
 	void Start () {
 
 		playerRigidbody = GetComponent<Rigidbody> ();
+
+        LineSpawn = GameObject.Find("BulletSpawn");
+        PlayerLine = LineSpawn.GetComponent<LineRenderer>();
 
 	}
 
@@ -48,6 +54,14 @@ public class PlayerMovement : MonoBehaviour {
 
             // make the player look at the point
             transform.LookAt(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
+
+            RaycastHit rayHitPoint;
+
+            // draw a line from the gun outwards
+            if (Physics.Raycast(LineSpawn.transform.position, Vector3.forward, out rayHitPoint, 50.0f))
+            {
+                PlayerLine.SetPosition(1, rayHitPoint.point);
+            }
         }
     }
 }
