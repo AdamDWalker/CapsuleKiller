@@ -25,8 +25,12 @@ public class EnemyAI : MonoBehaviour
 
     public void Die()
     {
+        // This will emit particles, and make the enemy invisible, untouchable and not move for 1 second until it is destroyed.
+        // It seemed easier than bothering to create a new object of particles in the same place as the recently destroyed enemy object.
         particles.Emit(20);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
+        speed = 0;
         Destroy(gameObject, 1);
     }
 }
