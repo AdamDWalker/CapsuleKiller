@@ -22,7 +22,7 @@ public class BulletMovement : MonoBehaviour
     {
         if ( collision.tag == "Enemy" )
         {
-            Destroy(collision.gameObject);
+            collision.GetComponent<EnemyAI>().Die();
             Destroy(bullet);
         }
     }
