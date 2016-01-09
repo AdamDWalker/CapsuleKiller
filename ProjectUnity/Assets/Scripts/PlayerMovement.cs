@@ -27,18 +27,27 @@ public class PlayerMovement : MonoBehaviour {
 
 		playerRigidbody.MovePosition (playerRigidbody.position + Velocity * Time.fixedDeltaTime);
 
-        // look at mouse
+        // create a ray from the camera to the to where the mouse is
         Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        float camDistance = 100;
+        float camDistance = 50;
 
+        // debug raycast (viewable in scene view)
         Debug.DrawRay(camRay.origin, camRay.direction*camDistance, Color.green);
 
-        Vector3 endPoint = camRay.origin + (camRay.direction * camDistance);
-        endPoint.y = 0;
+        // create a plane to detect the collision 
+        Plane hPlane = new Plane(Vector3.up, Vector3.zero);
 
-        Quaternion newRotation = Quaternion.LookRotation(endPoint);
+        // Plane.Raycast stores the distance from ray.origin to the hit point in this variable
+        float distance = 0;
+        // if the ray hits the plane...
+        if (hPlane.Raycast(camRay, out distance))
+        {
+            // get the hit point
+            Vector3 hitPoint = camRay.GetPoint(distance);
 
-        playerRigidbody.MoveRotation(newRotation);
+            // make the player look at the point
+            transform.LookAt(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
+        }
     }
 }
