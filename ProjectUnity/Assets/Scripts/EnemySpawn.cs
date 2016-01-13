@@ -40,13 +40,16 @@ public class EnemySpawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timerValue -= Time.deltaTime;
-
-        if (timerValue <= 0.0f)
+        if (!GameManager.isPlayerDead)
         {
-            timerValue = spawnSpeed; // reset timer
+            timerValue -= Time.deltaTime;
 
-            spawnEnemy();
+            if (timerValue <= 0.0f)
+            {
+                timerValue = spawnSpeed; // reset timer
+
+                spawnEnemy();
+            }
         }
 	}
 
