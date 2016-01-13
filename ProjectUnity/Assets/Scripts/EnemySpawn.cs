@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class EnemySpawn : MonoBehaviour {
 
@@ -10,6 +9,9 @@ public class EnemySpawn : MonoBehaviour {
     public uint enemyLowerBound = 3;
     public uint enemyUpperBound = 6;
 
+    // radius around player that enemies will not spawn
+    public float spawnRadius = 3;
+
     // for how big the plane (floor) is
     private float areaxSize;
     private float areazSize;
@@ -18,6 +20,9 @@ public class EnemySpawn : MonoBehaviour {
     private MeshRenderer floorMesh;
 
     private float timerValue;
+
+    // player game object
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +34,8 @@ public class EnemySpawn : MonoBehaviour {
         areazSize = floorMesh.bounds.size.z / 2;
 
         timerValue = spawnSpeed;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	// Update is called once per frame
@@ -49,10 +56,28 @@ public class EnemySpawn : MonoBehaviour {
         int enemy_count = (int)Random.Range(enemyLowerBound, enemyUpperBound); // generate a random number of enemies
         for (int i = 0; i < enemy_count; i++) // loop to create them
         {
-            // calculate enemy location using width and depth of the plane
-            float xPos = Random.Range(-areaxSize, areaxSize);
-            float zPos = Random.Range(-areazSize, areazSize);
-            Vector3 EnemyLocation = new Vector3(xPos, 1.0f, zPos);
+            Vector3 EnemyLocation;
+            bool success = true;
+            do
+            {
+                success = true;
+
+                // calculate enemy location using width and depth of the plane
+                float xPos = Random.Range(-areaxSize, areaxSize);
+                float zPos = Random.Range(-areazSize, areazSize);
+                EnemyLocation = new Vector3(xPos, 1.0f, zPos);
+
+                float playerX = player.transform.position.x;
+                float playerZ = player.transform.position.z;
+
+                if ((playerX + spawnRadius) > EnemyLocation.x && (playerX - spawnRadius) < EnemyLocation.x &&
+                    (playerZ + spawnRadius) > EnemyLocation.z && (playerZ - spawnRadius) < EnemyLocation.z)
+                {
+                    Debug.Log("Too close");
+                    success = false;
+                }
+
+            } while (!success);
 
             Instantiate(enemy, EnemyLocation, Quaternion.identity);
         }
