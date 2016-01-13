@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
-
     public int health = 3;
     private ParticleSystem particles;
 
@@ -24,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
 
     void playerDie()
     {
-
+        GameManager.isPlayerDead = true;
         particles.Emit(20);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
