@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456366}
-  - 120: {fileID: 12037848}
+  - 120: {fileID: 12099964}
   m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
@@ -36,23 +36,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &124878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 420976}
-  - 198: {fileID: 19805142}
-  - 199: {fileID: 19971644}
-  m_Layer: 0
-  m_Name: Particle System
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &157772
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +47,7 @@ GameObject:
   - 33: {fileID: 3318968}
   - 65: {fileID: 6527314}
   - 23: {fileID: 2371192}
-  - 114: {fileID: 11456040}
+  - 114: {fileID: 11488736}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -81,7 +64,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 490902}
   - 33: {fileID: 3303422}
-  - 65: {fileID: 6501822}
+  - 65: {fileID: 6591080}
   - 23: {fileID: 2343828}
   m_Layer: 0
   m_Name: Gun Handle
@@ -104,18 +87,6 @@ Transform:
   - {fileID: 490902}
   m_Father: {fileID: 459002}
   m_RootOrder: 0
---- !u!4 &420976
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124878}
-  m_LocalRotation: {x: -0.6881512, y: 0, z: 0, w: 0.7255674}
-  m_LocalPosition: {x: 0, y: -0.39, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 459002}
-  m_RootOrder: 1
 --- !u!4 &456366
 Transform:
   m_ObjectHideFlags: 1
@@ -135,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.244, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 418386}
@@ -268,18 +239,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &6501822
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6527314
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -292,18 +251,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11456040
-MonoBehaviour:
+--- !u!65 &6591080
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157772}
+  m_GameObject: {fileID: 162654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2eeea960282c347b1d097dfa4ee1b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 195014, guid: cad25dbba52ddcc4bbfb19e90399e3ec, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11487680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +275,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
---- !u!120 &12037848
+  lineLayer:
+    serializedVersion: 2
+    m_Bits: 4294966783
+--- !u!114 &11488736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2eeea960282c347b1d097dfa4ee1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 195014, guid: cad25dbba52ddcc4bbfb19e90399e3ec, type: 2}
+--- !u!120 &12099964
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1894,7 +1868,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118292}
