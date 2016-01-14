@@ -16,6 +16,7 @@ public class BlockSpawn : MonoBehaviour
     // The floor
     private GameObject floor;
     private MeshRenderer floorMesh;
+    private GameObject BlockList;
 
     // Use this for initialization
     void Start ()
@@ -26,6 +27,9 @@ public class BlockSpawn : MonoBehaviour
         int blockCount = (int)Random.Range(blockLowerBound, blockUpperBound);
         areaxSize = floorMesh.bounds.size.x / 2; // needs to be halved because counting starts at origin
         areazSize = floorMesh.bounds.size.z / 2;
+
+        BlockList = new GameObject();
+        BlockList.name = "Level";
 
         spawnBlocks(blockCount);
     }
@@ -40,7 +44,9 @@ public class BlockSpawn : MonoBehaviour
             float zPos = Random.Range(-areazSize, areazSize);
             blockLocation = new Vector3(xPos, 1.0f, zPos);
 
-            Instantiate(block, blockLocation, Quaternion.identity);
+            GameObject newBlock;
+            newBlock = Instantiate(block, blockLocation, Quaternion.identity) as GameObject;
+            newBlock.transform.parent = BlockList.transform;
         }
     }
 }
