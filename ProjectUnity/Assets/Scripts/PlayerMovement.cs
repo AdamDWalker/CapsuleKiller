@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	public int speed = 5;
+    public LayerMask lineLayer;
 
     private Rigidbody playerRigidbody;
 	private Vector3 Velocity;
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
 
             // draw a line from the gun outwards
             // raycast to find the point of intersection
-            if (Physics.Raycast(LineSpawn.transform.position, transform.forward, out rayHitPoint, 50.0f))
+            if (Physics.Raycast(LineSpawn.transform.position, transform.forward, out rayHitPoint, 50.0f, lineLayer))
             {
                 // find distance between the 2 points
                 float lineDistance = Vector3.Distance(LineSpawn.transform.position, rayHitPoint.point);
