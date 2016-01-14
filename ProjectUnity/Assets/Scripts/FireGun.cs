@@ -17,7 +17,7 @@ public class FireGun : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if ( Input.GetMouseButtonDown(0) )
+        if ( Input.GetMouseButtonDown(0) && !GameManager.isPlayerDead)
         {
             GameObject newBullet = Instantiate(bullet);
             Destroy(newBullet, 10.0f);

@@ -428,6 +428,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 157772, guid: 27753e99f7ca07446a58e3c6ce1df198, type: 2}
+      propertyPath: m_TagString
+      value: Gun
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27753e99f7ca07446a58e3c6ce1df198, type: 2}
   m_IsPrefabParent: 0
