@@ -5,7 +5,7 @@ public class EnemySpawn : MonoBehaviour {
     public GameObject enemy;
     public float spawnSpeed = 10.0f;
 
-    // batches of enemies
+    // waves of enemies
     public uint enemyLowerBound = 3;
     public uint enemyUpperBound = 6;
 
