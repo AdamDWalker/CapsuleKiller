@@ -20,9 +20,13 @@ public class BulletMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if ( collision.tag == "Enemy" )
+        Debug.Log(collision.tag);
+        if (collision.tag != "Gun")
         {
-            collision.GetComponent<EnemyAI>().Die();
+            if (collision.tag == "Enemy")
+            {
+                collision.GetComponent<EnemyAI>().Die();
+            }
             Destroy(bullet);
         }
     }
