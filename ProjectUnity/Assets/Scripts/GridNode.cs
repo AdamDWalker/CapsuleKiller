@@ -3,13 +3,15 @@ using System.Collections;
 
 public class GridNode : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private Vector3 position;
+
+	public GridNode(Vector3 pos)
+    {
+        position = pos;
+    }
+
+    public Vector3 getPosition()
+    {
+        return position;
+    }
 }
