@@ -23,6 +23,9 @@ public class MyGrid : MonoBehaviour {
         floor_width = floor.bounds.size.x;
         floor_depth = floor.bounds.size.z;
 
+        // init grid array
+        grid = new GridNode[blockRows, blockColumns];
+
         // calculate the block width & depth
         block_width = floor_width / blockRows;
         block_depth = floor_depth / blockColumns;
@@ -43,12 +46,21 @@ public class MyGrid : MonoBehaviour {
             }
             // move to the next row
             currentPosition.x = TopLeftPoint.x;
-            currentPosition.y += block_depth;
+            currentPosition.z -= block_depth;
         }
     }
 
-    // Update is called once per frame
-    void Update () {
-	
-	}
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        if (grid != null)
+        {
+            foreach (GridNode n in grid)
+            {
+                Vector3 position = n.getPosition();
+                Vector3 cubePosition = new Vector3(position.x + block_width / 2, position.y, position.z - block_depth / 2);
+                Gizmos.DrawCube(cubePosition, new Vector3(block_width, 1, block_depth));
+            }
+        }
+    }
 }
