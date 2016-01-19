@@ -29,7 +29,9 @@ public class PlayerHealth : MonoBehaviour {
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         Destroy(gameObject, 1);
-
+        double enemiesKilled = ScoreScript.getScore();
+        int waveCount = EnemySpawn.getWave();
+        Debug.Log("Enemies Killed: " + enemiesKilled + " Wave Reached: " + waveCount + " Final Score: " + waveCount * enemiesKilled);
         // Set gamestate to over
     }
 
