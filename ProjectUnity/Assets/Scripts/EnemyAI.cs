@@ -19,8 +19,11 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mySpeed = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, mySpeed); // move the enemy
+        if (!GameManager.isPlayerDead)
+        {
+            float mySpeed = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, mySpeed); // move the enemy
+        }
     }
 
     public void Die()
