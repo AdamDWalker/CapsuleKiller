@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScoreScript : MonoBehaviour {
+public static class ScoreScript {
 
     private static double score;
 
@@ -21,6 +21,6 @@ public class ScoreScript : MonoBehaviour {
     public static void increaseScore(double scoreValue)
     {
         score += scoreValue;
-        Debug.Log("Score increased. Score is now" + score);
+        Debug.Log("Score increased to: " + score);
     }
 }

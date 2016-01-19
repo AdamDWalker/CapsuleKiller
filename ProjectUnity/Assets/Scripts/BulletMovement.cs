@@ -26,6 +26,7 @@ public class BulletMovement : MonoBehaviour
             if (collision.tag == "Enemy")
             {
                 collision.GetComponent<EnemyAI>().Die();
+                ScoreScript.increaseScore(1);
             }
             Destroy(bullet);
         }
