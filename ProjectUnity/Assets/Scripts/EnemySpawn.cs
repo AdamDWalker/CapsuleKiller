@@ -24,6 +24,8 @@ public class EnemySpawn : MonoBehaviour {
     // player game object
     private GameObject player;
 
+    private static int waveCount = 0;
+
 	// Use this for initialization
 	void Start () {
         floor = gameObject; // find the floor game object
@@ -36,6 +38,11 @@ public class EnemySpawn : MonoBehaviour {
         timerValue = spawnSpeed;
 
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public static int getWave()
+    {
+        return waveCount;
     }
 	
 	// Update is called once per frame
@@ -84,5 +91,6 @@ public class EnemySpawn : MonoBehaviour {
 
             Instantiate(enemy, EnemyLocation, Quaternion.identity);
         }
+        waveCount++;
     }
 }
