@@ -5,7 +5,7 @@ public class GridNode {
 
     private Vector3 position; // centre position
     private Vector2 dimensions;
-    private bool walkable;
+    private bool walkable = true;
 
 	public GridNode(Vector3 pos, Vector2 dims)
     {

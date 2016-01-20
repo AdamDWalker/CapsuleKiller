@@ -47,6 +47,7 @@ public class BlockSpawn : MyGrid
                 randomNode.setWalkable(false);
 
                 Vector3 blockLocation = randomNode.getCentrePosition();
+                blockLocation.y = block.transform.position.y;
 
                 Vector2 nodeDimensions = randomNode.getDimensions();
 
