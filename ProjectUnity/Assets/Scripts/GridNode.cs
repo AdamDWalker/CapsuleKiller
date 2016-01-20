@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridNode : MonoBehaviour {
+public class GridNode {
 
     private Vector3 position; // centre position
     private bool walkable;

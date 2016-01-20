@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockSpawn : MonoBehaviour
+public class BlockSpawn : MyGrid
 {
 
     public GameObject block;
@@ -30,6 +30,8 @@ public class BlockSpawn : MonoBehaviour
 
         BlockList = new GameObject();
         BlockList.name = "Level";
+
+        createGrid(floor.GetComponent<MeshRenderer>());
 
         spawnBlocks(blockCount);
     }

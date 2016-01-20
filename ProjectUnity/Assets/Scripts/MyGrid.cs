@@ -17,9 +17,9 @@ public class MyGrid : MonoBehaviour {
     private GridNode[,] grid;
 
 	// Use this for initialization
-	void Start () {
+	protected void createGrid (MeshRenderer f) {
         // get the mesh renderer to calculate the floor bounds
-        floor = gameObject.GetComponent<MeshRenderer>();
+        floor = f;
         floor_width = floor.bounds.size.x;
         floor_depth = floor.bounds.size.z;
 
