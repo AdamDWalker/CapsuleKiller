@@ -59,9 +59,9 @@ public class MyGrid : MonoBehaviour {
                 Vector3 position = n.getPosition();
                 Vector3 cubePosition = new Vector3(position.x + block_width / 2, position.y, position.z - block_depth / 2);
                 Gizmos.color = Color.black;
-                Gizmos.DrawWireCube(cubePosition, new Vector3(block_width, 1, block_depth));
+                Gizmos.DrawWireCube(cubePosition, new Vector3(block_width, 0.1f, block_depth));
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(cubePosition, new Vector3(block_width, 1, block_depth));
+                Gizmos.DrawCube(cubePosition, new Vector3(block_width, 0.1f, block_depth));
             }
         }
     }
