@@ -40,15 +40,23 @@ public class BlockSpawn : MyGrid
     {
         for(int i = 0; i < count; i++)
         {
-            Vector3 blockLocation;
+            GridNode randomNode = getBlockSpawn();
 
-            float xPos = Random.Range(-areaxSize, areaxSize);
-            float zPos = Random.Range(-areazSize, areazSize);
-            blockLocation = new Vector3(xPos, 1.0f, zPos);
+            if (randomNode.isWalkable())
+            {
+                randomNode.setWalkable(false);
 
-            GameObject newBlock;
-            newBlock = Instantiate(block, blockLocation, Quaternion.identity) as GameObject;
-            newBlock.transform.parent = BlockList.transform;
+                Vector3 blockLocation = randomNode.getCentrePosition();
+
+                Vector2 nodeDimensions = randomNode.getDimensions();
+
+                GameObject newBlock;
+                newBlock = Instantiate(block, blockLocation, Quaternion.identity) as GameObject;
+                newBlock.transform.localScale = new Vector3(1.0f * nodeDimensions.x, newBlock.transform.localScale.y, 1.0f * nodeDimensions.y);
+                newBlock.transform.parent = BlockList.transform;
+
+            }
+
         }
     }
 }

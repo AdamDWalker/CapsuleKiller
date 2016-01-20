@@ -41,7 +41,7 @@ public class MyGrid : MonoBehaviour {
         {
             for (int j = 0; j < blockColumns; j++)
             {
-                grid[i, j] = new GridNode(currentPosition); // add a node at the current position
+                grid[i, j] = new GridNode(currentPosition, new Vector2(block_width, block_depth)); // add a node at the current position
                 currentPosition.x += block_width; // move to the right one block
             }
             // move to the next row
@@ -50,19 +50,27 @@ public class MyGrid : MonoBehaviour {
         }
     }
 
+    // For testing in the editor
     void OnDrawGizmos()
     {
         if (grid != null)
         {
             foreach (GridNode n in grid)
             {
-                Vector3 position = n.getPosition();
-                Vector3 cubePosition = new Vector3(position.x + block_width / 2, position.y, position.z - block_depth / 2);
+                Vector3 cubePosition = n.getCentrePosition();
                 Gizmos.color = Color.black;
                 Gizmos.DrawWireCube(cubePosition, new Vector3(block_width, 0.1f, block_depth));
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawCube(cubePosition, new Vector3(block_width, 0.1f, block_depth));
             }
         }
+    }
+
+    protected GridNode getBlockSpawn()
+    {
+        int row = Random.Range(0, blockRows);
+        int col = Random.Range(0, blockColumns);
+
+        return grid[row,col];
     }
 }
