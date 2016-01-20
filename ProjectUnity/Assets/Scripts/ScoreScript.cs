@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public static class ScoreScript {
+public class ScoreScript : MonoBehaviour{
 
     private static double score;
+
+    private static Text waveDisplay;
+    private static int waveCount;
 
     /// <summary>
     /// Get the score
@@ -12,6 +16,22 @@ public static class ScoreScript {
 	public static double getScore()
     {
         return score;
+    }
+
+    void Start()
+    {
+        waveCount = 0;
+        waveDisplay = GetComponent<Text>();
+    }
+
+    public static void updateWaveCount(int waveNum)
+    {
+        waveCount = waveNum;
+    }
+
+    void Update()
+    {
+        waveDisplay.text = "Wave: " + waveCount;
     }
 
     /// <summary>
