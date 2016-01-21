@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockSpawn : MyGrid
+public class BlockSpawn : MonoBehaviour
 {
 
     public GameObject block;
@@ -18,11 +18,15 @@ public class BlockSpawn : MyGrid
     private MeshRenderer floorMesh;
     private GameObject BlockList;
 
+    private MyGrid grid;
+
     // Use this for initialization
     void Start ()
     {
         floor = gameObject;
         floorMesh = floor.GetComponent<MeshRenderer>();
+
+        grid = GetComponent<MyGrid>();
 
         int blockCount = (int)Random.Range(blockLowerBound, blockUpperBound);
         areaxSize = floorMesh.bounds.size.x / 2; // needs to be halved because counting starts at origin
@@ -31,7 +35,7 @@ public class BlockSpawn : MyGrid
         BlockList = new GameObject();
         BlockList.name = "Level";
 
-        createGrid(floor.GetComponent<MeshRenderer>());
+        grid.createGrid(floor.GetComponent<MeshRenderer>());
 
         spawnBlocks(blockCount);
     }
@@ -40,7 +44,7 @@ public class BlockSpawn : MyGrid
     {
         for(int i = 0; i < count; i++)
         {
-            GridNode randomNode = getBlockSpawn();
+            GridNode randomNode = grid.getBlockSpawn();
 
             if (randomNode.isWalkable())
             {

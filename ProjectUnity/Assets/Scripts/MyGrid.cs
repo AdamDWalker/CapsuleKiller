@@ -17,7 +17,7 @@ public class MyGrid : MonoBehaviour {
     private GridNode[,] grid;
 
 	// Use this for initialization
-	protected void createGrid (MeshRenderer f) {
+	public void createGrid (MeshRenderer f) {
         // get the mesh renderer to calculate the floor bounds
         floor = f;
         floor_width = floor.bounds.size.x;
@@ -66,7 +66,7 @@ public class MyGrid : MonoBehaviour {
         }
     }
 
-    protected GridNode getBlockSpawn()
+    public GridNode getBlockSpawn()
     {
         int row = Random.Range(0, blockRows);
         int col = Random.Range(0, blockColumns);
