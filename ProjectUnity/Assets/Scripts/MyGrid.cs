@@ -17,7 +17,7 @@ public class MyGrid : MonoBehaviour {
     private GridNode[,] grid;
 
 	// Use this for initialization
-	public void createGrid (MeshRenderer f) {
+	protected void createGrid (MeshRenderer f) {
         // get the mesh renderer to calculate the floor bounds
         floor = f;
         floor_width = floor.bounds.size.x;

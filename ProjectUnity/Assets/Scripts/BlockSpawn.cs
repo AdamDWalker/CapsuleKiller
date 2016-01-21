@@ -8,34 +8,20 @@ public class BlockSpawn : MonoBehaviour
 
     public uint blockLowerBound = 10;
     public uint blockUpperBound = 20;
-
-    // Size of the floor
-    private float areaxSize;
-    private float areazSize;
     
     // The floor
-    private GameObject floor;
-    private MeshRenderer floorMesh;
+    private Floor floor;
     private GameObject BlockList;
-
-    private MyGrid grid;
 
     // Use this for initialization
     void Start ()
     {
-        floor = gameObject;
-        floorMesh = floor.GetComponent<MeshRenderer>();
-
-        grid = GetComponent<MyGrid>();
+        floor = GetComponent<Floor>();
 
         int blockCount = (int)Random.Range(blockLowerBound, blockUpperBound);
-        areaxSize = floorMesh.bounds.size.x / 2; // needs to be halved because counting starts at origin
-        areazSize = floorMesh.bounds.size.z / 2;
 
         BlockList = new GameObject();
         BlockList.name = "Level";
-
-        grid.createGrid(floor.GetComponent<MeshRenderer>());
 
         spawnBlocks(blockCount);
     }
@@ -44,7 +30,7 @@ public class BlockSpawn : MonoBehaviour
     {
         for(int i = 0; i < count; i++)
         {
-            GridNode randomNode = grid.getBlockSpawn();
+            GridNode randomNode = floor.getBlockSpawn();
 
             if (randomNode.isWalkable())
             {
