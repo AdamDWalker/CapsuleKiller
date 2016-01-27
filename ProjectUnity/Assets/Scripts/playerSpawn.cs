@@ -6,7 +6,7 @@ public class playerSpawn : MonoBehaviour {
     private Floor floor;
 
 	// Use this for initialization
-	void Start () {
+	public void SpawnPlayer () {
         floor = GameObject.Find("Floor").GetComponent<Floor>();
 
         // spawn the player in a random postion

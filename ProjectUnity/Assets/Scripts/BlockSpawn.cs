@@ -24,6 +24,8 @@ public class BlockSpawn : MonoBehaviour
         BlockList.name = "Level";
 
         spawnBlocks(blockCount);
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<playerSpawn>().SpawnPlayer();
     }
 	
     void spawnBlocks(int count)
