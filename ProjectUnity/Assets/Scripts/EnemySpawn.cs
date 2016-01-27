@@ -6,19 +6,14 @@ public class EnemySpawn : MonoBehaviour {
     public GameObject enemy;
     public float spawnSpeed = 10.0f;
 
-    // batches of enemies
+    // waves of enemies
     public uint enemyLowerBound = 3;
     public uint enemyUpperBound = 6;
 
     // radius around player that enemies will not spawn
     public float spawnRadius = 3;
 
-    // for how big the plane (floor) is
-    private float areaxSize;
-    private float areazSize;
-
-    private GameObject floor;
-    private MeshRenderer floorMesh;
+    private Floor floor;
 
     private float timerValue;
 
@@ -29,12 +24,7 @@ public class EnemySpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        floor = gameObject; // find the floor game object
-        floorMesh = floor.GetComponent<MeshRenderer>(); // get the mesh (to calc the bounds)
-
-        // find the size of the bounds
-        areaxSize = floorMesh.bounds.size.x / 2; // needs to be halved because counting starts at origin
-        areazSize = floorMesh.bounds.size.z / 2;
+        floor = GetComponent<Floor>(); // find the floor game object
 
         timerValue = spawnSpeed;
 
@@ -56,13 +46,14 @@ public class EnemySpawn : MonoBehaviour {
             {
                 timerValue = spawnSpeed; // reset timer
 
-                spawnEnemy();
+                spawnEnemies();
             }
         }
 	}
 
-    void spawnEnemy()
+    void spawnEnemies()
     {
+        Vector2 floorSize = floor.getHalfSize();
         // make the enem(ies)
         int enemy_count = (int)Random.Range(enemyLowerBound, enemyUpperBound); // generate a random number of enemies
         for (int i = 0; i < enemy_count; i++) // loop to create them
@@ -74,8 +65,8 @@ public class EnemySpawn : MonoBehaviour {
                 success = true;
 
                 // calculate enemy location using width and depth of the plane
-                float xPos = Random.Range(-areaxSize, areaxSize);
-                float zPos = Random.Range(-areazSize, areazSize);
+                float xPos = Random.Range(-floorSize.x, floorSize.x);
+                float zPos = Random.Range(-floorSize.y, floorSize.y);
                 EnemyLocation = new Vector3(xPos, 1.0f, zPos);
 
                 float playerX = player.transform.position.x;
