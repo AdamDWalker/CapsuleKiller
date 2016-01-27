@@ -119,6 +119,18 @@ Transform:
   - {fileID: 490902}
   m_Father: {fileID: 459002}
   m_RootOrder: 0
+--- !u!4 &441826
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152160}
+  m_LocalRotation: {x: -0.6881512, y: 0, z: 0, w: 0.7255674}
+  m_LocalPosition: {x: 0, y: -0.39, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459002}
+  m_RootOrder: 1
 --- !u!4 &456366
 Transform:
   m_ObjectHideFlags: 1
@@ -456,7 +468,7 @@ ParticleSystem:
   looping: 1
   prewarm: 1
   playOnAwake: 0
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 2
   InitialModule:
     serializedVersion: 2
