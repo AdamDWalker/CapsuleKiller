@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
-    public int health = 3;
+    public float health = 3;
     private ParticleSystem particles;
 
 	// Use this for initialization
 	void Start () {
+        health = 3;
         particles = GetComponentInChildren<ParticleSystem>();
 	}
 	
@@ -42,6 +43,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             collision.gameObject.GetComponent<EnemyAI>().Die();
             health -= 1;
+            HealthBar.getHealth(health);
             Debug.Log("Collision, health: " + health);
         }
     }
