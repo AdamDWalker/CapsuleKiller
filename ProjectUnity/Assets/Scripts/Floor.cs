@@ -15,8 +15,6 @@ public class Floor : MyGrid {
 
         areaxSize = floorMesh.bounds.size.x;
         areazSize = floorMesh.bounds.size.z;
-
-        createGrid(floorMesh);
     }
 
     public Vector2 getSize()

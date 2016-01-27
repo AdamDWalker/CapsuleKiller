@@ -16,6 +16,12 @@ public class MyGrid : MonoBehaviour {
 
     private GridNode[,] grid;
 
+    void Awake()
+    {
+        floor = GetComponent<MeshRenderer>();
+        createGrid(floor);
+    }
+
 	// Use this for initialization
 	protected void createGrid (MeshRenderer f) {
         // get the mesh renderer to calculate the floor bounds
