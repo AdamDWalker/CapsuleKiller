@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour {
 
@@ -34,7 +35,7 @@ public class EnemySpawn : MonoBehaviour {
     {
         return waveCount;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (!GameManager.isPlayerDead)
@@ -83,5 +84,6 @@ public class EnemySpawn : MonoBehaviour {
             Instantiate(enemy, EnemyLocation, Quaternion.identity);
         }
         waveCount++;
+        ScoreScript.updateWaveCount(waveCount);
     }
 }
