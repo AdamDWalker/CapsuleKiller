@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 Velocity;
     private GameObject LineSpawn;
     private LineRenderer PlayerLine;
+	private float playerYVal = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,12 @@ public class PlayerMovement : MonoBehaviour {
 	
 		Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
 		Velocity = moveInput.normalized * speed;
+
+		// If the player spawns inside the floor or gets flung into the air this should put them back in the proper place
+		if ((gameObject.transform.position.y < 1 && gameObject.transform.position.y > -1) || gameObject.transform.position.y > 2) 
+		{
+			gameObject.transform.position = new Vector3 (gameObject.transform.position.x, 1.0f, gameObject.transform.position.z);
+		}
 
 	}
 
