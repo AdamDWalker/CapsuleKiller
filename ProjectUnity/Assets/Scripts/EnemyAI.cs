@@ -24,6 +24,11 @@ public class EnemyAI : MonoBehaviour
             float mySpeed = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, mySpeed); // move the enemy
         }
+
+        if (gameObject.transform.position.y < -5)
+        {
+            reset();
+        }
     }
 
     public void Die()
@@ -35,5 +40,13 @@ public class EnemyAI : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         speed = 0;
         Destroy(gameObject, 1);
+    }
+
+    /// <summary>
+    /// In case the enemy gets outside of the level somehow, this should reset them back
+    /// </summary>
+    public void reset()
+    {
+        gameObject.transform.position = new Vector3(0, 1, 0);
     }
 }

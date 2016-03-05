@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
-    public int health = 3;
+    public float health = 3;
     private ParticleSystem particles;
 
 	// Use this for initialization
 	void Start () {
+        health = 3;
         particles = GetComponentInChildren<ParticleSystem>();
 	}
 	
@@ -29,7 +30,9 @@ public class PlayerHealth : MonoBehaviour {
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         Destroy(gameObject, 1);
-
+        double enemiesKilled = ScoreScript.getScore();
+        int waveCount = EnemySpawn.getWave();
+        Debug.Log("Enemies Killed: " + enemiesKilled + " Wave Reached: " + waveCount + " Final Score: " + waveCount * enemiesKilled);
         // Set gamestate to over
     }
 
@@ -40,6 +43,7 @@ public class PlayerHealth : MonoBehaviour {
         {
             collision.gameObject.GetComponent<EnemyAI>().Die();
             health -= 1;
+            HealthBar.getHealth(health);
             Debug.Log("Collision, health: " + health);
         }
     }
